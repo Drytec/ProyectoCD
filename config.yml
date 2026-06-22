@@ -10,6 +10,6 @@ ETL_PRO:
   drivername: postgresql
   dbname: etl_process
   user: postgres
-  password: ""
+  password: "12345"
   host: localhost
   port: "5432"
