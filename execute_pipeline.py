@@ -29,19 +29,23 @@ def run_notebook(nb_filename):
     
     start_time = time.time()
     
+    # Get the directory of the current script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    nb_path = os.path.join(script_dir, nb_filename)
+    
     # Read the notebook
-    with open(nb_filename, "r", encoding="utf-8") as f:
+    with open(nb_path, "r", encoding="utf-8") as f:
         nb = nbformat.read(f, as_version=4)
         
     # Configure execution to use the newly installed venv-mensajeria kernel
     ep = ExecutePreprocessor(timeout=600, kernel_name="venv-mensajeria")
     
     try:
-        # Run the notebook in the current directory context
-        ep.preprocess(nb, {"metadata": {"path": "."}})
+        # Run the notebook in the script's directory context
+        ep.preprocess(nb, {"metadata": {"path": script_dir}})
         
         # Save the executed notebook back in-place
-        with open(nb_filename, "w", encoding="utf-8") as f:
+        with open(nb_path, "w", encoding="utf-8") as f:
             nbformat.write(nb, f)
             
         elapsed = time.time() - start_time
