@@ -19,7 +19,9 @@ notebooks_order = [
     "trans_servicios.ipynb",
     # Paso 3: Tablas de hechos (en este orden obligatorio)
     "hecho_servicios.ipynb",
-    "hecho_novedades.ipynb"
+    "hecho_novedades.ipynb",
+    # Paso 4: Consultas finales
+    "consultas.ipynb"
 ]
 
 def run_notebook(nb_filename):
